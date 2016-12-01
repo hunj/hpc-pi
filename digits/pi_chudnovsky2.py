@@ -1,4 +1,4 @@
-#Chudnovsky Algorithm                                                                                         
+# Chudnovsky's Algorithm                                                                                         
  
 from decimal import *
 from math import factorial, pi
@@ -20,4 +20,5 @@ def compute_pi(n):
     elapsed_time = time.time() - start_time
     print elapsed_time
     print cal_pi
+
 compute_pi(2000)
