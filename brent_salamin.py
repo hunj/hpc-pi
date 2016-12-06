@@ -1,9 +1,8 @@
-#found online
 from __future__ import with_statement
 import decimal
 import time
 
-def pi_gauss_legendre():
+def pi_brent_salamin():
     D = decimal.Decimal
     with decimal.localcontext() as ctx:
         ctx.prec += 2                
@@ -24,4 +23,4 @@ def pi_gauss_legendre():
         return +pi
 
 decimal.getcontext().prec = 100000
-print pi_gauss_legendre()
+print brent_salamin()
