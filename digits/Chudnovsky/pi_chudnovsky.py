@@ -8,6 +8,9 @@ def compute_pi(n):
     cal_pi = Decimal(0)
     num = Decimal(0)
     den = Decimal(0)
+
+    #number of digits to output
+    #have to verify that last 10 digits are correct, or else increase iterations
     getcontext().prec = 25000
 
     start_time = time.time()
@@ -21,4 +24,5 @@ def compute_pi(n):
     print elapsed_time
     print cal_pi
 
+#number of iterations
 compute_pi(2000)
