@@ -2,6 +2,7 @@
 
 import math
 from decimal import *
+import sys
 import time
 
 def main():
@@ -33,9 +34,11 @@ def main():
     # time's up, finish up the calculation
     calculated_pi = load / result
 
+    pi_decimal = Decimal(float(math.pi))
     # display cute message and quit.
     print "Calculated pi: ", calculated_pi
-
+    print "Difference to exact value of pi: ", calculated_pi - pi_decimal
+    print "Error: (approx-exact)/exact = ", (calculated_pi - pi_decimal) / pi_decimal * 100, "%"
 
 if __name__ == '__main__':
     main()
