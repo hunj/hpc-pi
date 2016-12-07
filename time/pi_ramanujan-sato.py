@@ -1,6 +1,5 @@
 # Ramanujan-Sato series approach for approximation of Pi.
 
-import random
 from decimal import *
 import datetime, time
 import sys
@@ -16,12 +15,15 @@ def main():
 
     # set up and start timer
     endTime = datetime.datetime.now() + datetime.timedelta(minutes=int(sys.argv[1]))
+    getcontext().prec = 10
 
     # the sweet part. constantly approximate Pi value.
     while True:
         # breaks when time's up
         if datetime.datetime.now() >= endTime:
             break
+
+        getcontext().prec += 5
 
         # Ramanujan-Sato series
         load_1 = math.factorial(4 * k) / (math.factorial(k) ** 4)
