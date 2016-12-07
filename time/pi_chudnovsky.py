@@ -1,9 +1,9 @@
 # Chudnovsky's Algorithm for approximation of Pi.
 
-import math
 from decimal import *
+import datetime, time
 import sys
-import time
+import math
 
 def main():
     # set up environment and announce
