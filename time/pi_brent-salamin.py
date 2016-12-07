@@ -2,47 +2,47 @@
 # uses Arithmetic-geometric mean.
 
 from decimal import *
-from math import factorial, pi
-import time
+import datetime, time
+import sys
+import math
 
 def main():
     # set up environment and announce
     calculated_pi = Decimal(0)
-    num = Decimal(0)
-    den = Decimal(0)
-    getcontext().prec = 25000
+    a_n, b_n, t_next, p_next = Decimal(1), 1 / Decimal(math.sqrt(2)), Decimal(0.25), Decimal(1)
 
-    start_time = time.time()
-    k = 0
-    for k in range(n):
-        num = ((-1)**k)*(factorial(6*k))*(13591409+545140134*k)
-        den = factorial(3*k)*(factorial(k)**3)*(640320**(3*k))
-        cal_pi += Decimal(num)/Decimal(den)
-    cal_pi = (Decimal(640320**(Decimal(3)/Decimal(2)))/Decimal(12))/Decimal(cal_pi)
-    elapsed_time = time.time() - start_time
-    print elapsed_time
-    print cal_pi
+    print "Brent-Salamin's Method to Pi approximation, running for %s minutes..." % sys.argv[1]
+
+    # set up and start timer
+    endTime = datetime.datetime.now() + datetime.timedelta(minutes=int(sys.argv[1]))
+    getcontext().prec = 10
+
+    # the sweet part. constantly approximate Pi value.
+    while True:
+        # breaks when time's up
+        if datetime.datetime.now() >= endTime:
+            break
+        getcontext().prec += 5
 
 
-def pi_brent_salamin():
-    D = decimal.Decimal
-    with decimal.localcontext() as ctx:
-        ctx.prec += 2                
-        a, b, t, p = 1, 1/D(math.sqrt(2)), 1/D(4), 1                
-        pi = None
-        start_time = time.time()
-        while 1:
-            an    = (a + b) / 2
-            b     = (a * b).sqrt()
-            t    -= p * (a - an) * (a - an)
-            a, p  = an, 2*p
-            piold = pi
-            pi    = (a + b) * (a + b) / (4 * t)
-            if pi == piold:
-                break
-        elapsed_time = time.time() - start_time
-        print elapsed_time
-        return +pi
+        a_next = Decimal((a_n + b_n) / 2)
+        b_next = Decimal(math.sqrt(a_n * b_n))
+        t_next -= Decimal(p_next) * Decimal((a_n - a_next) ** 2)
+        p_next *= 2
 
-decimal.getcontext().prec = 100000
-print brent_salamin()
+        a_n = a_next
+        b_n = b_next
+
+        calculated_pi = Decimal((a_n + b_n) * (a_n + b_n)) / Decimal(4 * t_next)
+
+    # time's up, finish up the calculation
+    pi_decimal = Decimal(float(math.pi))
+
+    # display cute message and quit.
+    print "Calculated pi:", calculated_pi
+    print "Difference to exact value of pi:", calculated_pi - pi_decimal
+    print "Error: (approx-exact)/exact =", (calculated_pi - pi_decimal) / pi_decimal * 100, "%"
+
+
+if __name__ == '__main__':
+    main()

@@ -29,16 +29,18 @@ def main():
         load_1 = math.factorial(4 * k) / (math.factorial(k) ** 4)
         load_2 = (26390 * k + 1103) / (396 ** (4 * k))
 
-        calculated_sum += load_1 * load_2
+        k += 1
+        calculated_sum += Decimal(load_1 * load_2)
 
     # time's up, finish up the calculation
     invert_pi = constant * calculated_sum
     calculated_pi = Decimal(invert_pi ** -1)
+    pi_decimal = Decimal(float(math.pi))
 
     # display cute message and quit.
     print "Calculated pi: ", calculated_pi
-    print "Difference to exact value of pi: ", calculated_pi - math.pi
-    print "Error: (approx-exact)/exact = ", (calculated_pi - math.pi) / math.pi * 100, "%"
+    print "Difference to exact value of pi: ", calculated_pi - pi_decimal
+    print "Error: (approx-exact)/exact = ", (calculated_pi - pi_decimal) / pi_decimal * 100, "%"
 
 
 if __name__ == '__main__':

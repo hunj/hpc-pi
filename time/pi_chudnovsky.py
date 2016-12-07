@@ -26,9 +26,11 @@ def main():
 
         getcontext().prec += 5
 
-        numerator = factorial(6 * k) * (545140134 * k + 13591409)
-        denominator = factorial(3 * k) * (factorial(k) ** Decimal(3))
+        numerator = Decimal(math.factorial(6 * k)) * Decimal((545140134 * k + 13591409))
+        denominator = Decimal(math.factorial(3 * k) * (math.factorial(k) ** 3)) * Decimal((-262537412640768000) ** k)
+
         payload = Decimal(numerator) / Decimal(denominator)
+        k += 1
         result += payload
 
     # time's up, finish up the calculation
