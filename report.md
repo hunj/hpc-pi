@@ -32,20 +32,20 @@ In time method, with 1 minute timeframe, we were able to observe that Ramanujan-
 - The Chudnovsky's and Brent-Salamin algorithms both calculated 100 digts pi in less a millisecond.
 - While the Monte-Carlo method took almost a second to calculate just to calculate 5 digits.
 - Furthermore, while the Nilakantha series is also a converging series like Chudnosky's and Brent-Salamin,
-the series coverged slower and took many more iterations to calculate the next digits of pi.
-The method took almost a second to calculate 10 digits of pi.
+  the series coverged slower and took many more iterations to calculate the next digits of pi.
+  The method took almost a second to calculate 10 digits of pi.
 
 ### Runtime for thousands of digits of Pi
 - Monte-Carlo method was not used because many iterations were required to calculate just a few more digits of pi.
-It could not keep up with the other processes.
+  It could not keep up with the other processes.
 - While the Nilakantha series was much faster than the Monte-Carlo, it required more iteration and more time per additional iteration.
-We did not use this method to calculate more digits of pi.
+  We did not use this method to calculate more digits of pi.
 - The Chudnovsky's and Brent-Salamin algorithms were compared
 
 ## How to run
 
-- `make 1min` to run all 4 algorithms
-- Running in HPC with SLURM script
+- `make 1min` to run all 4 algorithms for 1 minute
+- Running in HPC with SLURM script will be implemented soon
 
 ## Result
 
@@ -64,9 +64,9 @@ The results are in each directory, `/time/result` and `/digits/result`
     - Difference to exact value of pi:  3.1415926..
     - Error: (approx-exact)/exact =  -2.526276..%
   - Brent-Salamin Formula
-  	- 1 minute
-  	- Calculated pi: 3.141592..
-  	- Difference to exact value of pi:  9.9129293
+    - 1 minute
+    - Calculated pi: 3.141592..
+    - Difference to exact value of pi:  9.9129293
     - Error: (approx-exact)/exact =  3.155383%
     - There seems to be an error in calculating the difference. This will be evaluated and fixed.
   - Monte-Carlo Method
